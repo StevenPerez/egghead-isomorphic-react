@@ -1,5 +1,6 @@
 var express = require('express');
 var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 var fs = require('fs');
 var Component = React.createFactory(require('./Component'));
 
@@ -11,7 +12,7 @@ var app = express();
 function home(req, res){
   var msg = req.params.msg || 'Hello';
   var comp = Component({msg:msg});
-  var page = TEMPLATE.replace('@@@', React.renderToString(comp))
+  var page = TEMPLATE.replace('@@@', ReactDOMServer.renderToString(comp))
   page = page.replace('###', '<script>renderApp("'+msg+'")</script>')
   res.send(page);
 }

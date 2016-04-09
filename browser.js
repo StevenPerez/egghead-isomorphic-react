@@ -1,6 +1,7 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Component = React.createFactory(require('./Component'));
 
 window.renderApp = function(msg){
-  React.render(Component({msg:msg}), document.getElementById('root'));
+  ReactDOM.render(Component({msg:msg}), document.getElementById('root'));
 }
